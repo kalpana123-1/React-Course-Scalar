@@ -20,12 +20,14 @@ function App() {
     {
       path: "/home",
       element: <HomePage />,
-    }
+    },
   ]);
   return (
     <div className="App">
       <div className="App-header">
         <img src={logo} alt="Store Logo" className="store-logo"></img>
+        <h1 style={{ textAlign: "center" }}>Welcome to K Store App</h1>
+        <p></p>
       </div>
       <div>
         <RouterProvider router={router}></RouterProvider>
