@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/navBar.css";
-import Cart from "../images/cart.png";
+// import Cart from "../images/cart.png";
 
 function NavBar() {
   return (
@@ -8,7 +8,7 @@ function NavBar() {
       <h2>Products</h2>
       <h2>
         Cart
-        <img
+        {/* <img
           style={{
             width: "80px",
             marginLeft: "10px",
@@ -16,7 +16,7 @@ function NavBar() {
           }}
           src={Cart}
           alt="Cart icon"
-        />
+        /> */}
       </h2>
       <h2>Users</h2>
       <h2>Logout</h2>
