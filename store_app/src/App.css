@@ -1,23 +1,20 @@
 body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: "Calibri";
   background-color: #ffffff;
 }
 
 .store-logo {
-  width: 10%;
-  height: 1%;
-  margin: 1%;
+  width: 80px;
+    height: 60px;
+    object-fit: contain;
 }
 
 .App-header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+    height: 60px;
 }
 
-h1 {
-  font-size: 200%;
-  text-align: center;
-  margin-top: -5%;
-}
