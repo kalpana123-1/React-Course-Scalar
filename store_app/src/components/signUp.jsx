@@ -1,6 +1,7 @@
 // src/SignUp.jsx
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+
 const SignUp = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -272,6 +273,12 @@ const SignUp = () => {
         </button>
       </form>
       {error && <div style={{ color: "red", marginTop: "10px" }}>{error}</div>}
+      <div>
+        Already have an account?{" "}
+        <Link to="/" style={{ color: "#A91D3A" }}>
+          Login here
+        </Link>
+      </div>
     </div>
   );
 };
