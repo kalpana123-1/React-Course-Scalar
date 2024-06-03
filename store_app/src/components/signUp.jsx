@@ -1,21 +1,21 @@
 // src/SignUp.jsx
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
-    email: "",
-    username: "",
-    password: "",
-    firstname: "",
-    lastname: "",
-    city: "",
-    street: "",
-    number: "",
-    zipcode: "",
-    lat: "",
-    long: "",
-    phone: "",
+    email: '',
+    username: '',
+    password: '',
+    firstname: '',
+    lastname: '',
+    city: '',
+    street: '',
+    number: '',
+    zipcode: '',
+    lat: '',
+    long: '',
+    phone: '',
   });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -49,17 +49,17 @@ const SignUp = () => {
     };
 
     try {
-      fetch("https://fakestoreapi.com/users/7", {
-        method: "PATCH",
+      fetch('https://fakestoreapi.com/users/7', {
+        method: 'PATCH',
         body: JSON.stringify(payload),
       })
         .then((res) => res.json())
         .then((json) => {
           console.log(json);
           if (!json) {
-            throw new Error("Something went wrong");
+            throw new Error('Something went wrong');
           } else {
-            navigate("/");
+            navigate('/');
           }
         });
     } finally {
@@ -80,16 +80,16 @@ const SignUp = () => {
   return (
     <div
       style={{
-        maxWidth: "400px",
-        margin: "0 auto",
-        padding: "20px",
-        border: "1px solid #ccc",
-        borderRadius: "4px",
+        maxWidth: '400px',
+        margin: '0 auto',
+        padding: '20px',
+        border: '1px solid #ccc',
+        borderRadius: '4px',
       }}
     >
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: "10px" }}>
+        <div style={{ marginBottom: '10px' }}>
           <label>
             Email:
             <input
@@ -98,12 +98,12 @@ const SignUp = () => {
               placeholder="Enter Email"
               value={formData.email}
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px", marginTop: "4px" }}
+              style={{ width: '100%', padding: '8px', marginTop: '4px' }}
               required
             />
           </label>
         </div>
-        <div style={{ marginBottom: "10px" }}>
+        <div style={{ marginBottom: '10px' }}>
           <label>
             Phone:
             <input
@@ -112,12 +112,12 @@ const SignUp = () => {
               placeholder="Enter Phone"
               value={formData.phone}
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px", marginTop: "4px" }}
+              style={{ width: '100%', padding: '8px', marginTop: '4px' }}
               required
             />
           </label>
         </div>
-        <div style={{ marginBottom: "10px" }}>
+        <div style={{ marginBottom: '10px' }}>
           <label>
             Username:
             <input
@@ -126,12 +126,12 @@ const SignUp = () => {
               placeholder="Enter Username"
               value={formData.username}
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px", marginTop: "4px" }}
+              style={{ width: '100%', padding: '8px', marginTop: '4px' }}
               required
             />
           </label>
         </div>
-        <div style={{ marginBottom: "10px" }}>
+        <div style={{ marginBottom: '10px' }}>
           <label>
             Password:
             <input
@@ -140,12 +140,12 @@ const SignUp = () => {
               placeholder="Enter Password"
               value={formData.password}
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px", marginTop: "4px" }}
+              style={{ width: '100%', padding: '8px', marginTop: '4px' }}
               required
             />
           </label>
         </div>
-        <div style={{ marginBottom: "10px" }}>
+        <div style={{ marginBottom: '10px' }}>
           <label>
             First Name:
             <input
@@ -154,12 +154,12 @@ const SignUp = () => {
               placeholder="Enter First Name"
               value={formData.firstname}
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px", marginTop: "4px" }}
+              style={{ width: '100%', padding: '8px', marginTop: '4px' }}
               required
             />
           </label>
         </div>
-        <div style={{ marginBottom: "10px" }}>
+        <div style={{ marginBottom: '10px' }}>
           <label>
             Last Name:
             <input
@@ -168,12 +168,12 @@ const SignUp = () => {
               placeholder="Enter Last Name"
               value={formData.lastname}
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px", marginTop: "4px" }}
+              style={{ width: '100%', padding: '8px', marginTop: '4px' }}
               required
             />
           </label>
         </div>
-        <div style={{ marginBottom: "10px" }}>
+        <div style={{ marginBottom: '10px' }}>
           <label>
             City:
             <input
@@ -182,12 +182,12 @@ const SignUp = () => {
               placeholder="Enter City"
               value={formData.city}
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px", marginTop: "4px" }}
+              style={{ width: '100%', padding: '8px', marginTop: '4px' }}
               required
             />
           </label>
         </div>
-        <div style={{ marginBottom: "10px" }}>
+        <div style={{ marginBottom: '10px' }}>
           <label>
             Street Name:
             <input
@@ -196,12 +196,12 @@ const SignUp = () => {
               placeholder="Enter Street Name"
               value={formData.street}
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px", marginTop: "4px" }}
+              style={{ width: '100%', padding: '8px', marginTop: '4px' }}
               required
             />
           </label>
         </div>
-        <div style={{ marginBottom: "10px" }}>
+        <div style={{ marginBottom: '10px' }}>
           <label>
             Street Number:
             <input
@@ -210,12 +210,12 @@ const SignUp = () => {
               placeholder="Enter Street Number"
               value={formData.number}
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px", marginTop: "4px" }}
+              style={{ width: '100%', padding: '8px', marginTop: '4px' }}
               required
             />
           </label>
         </div>
-        <div style={{ marginBottom: "10px" }}>
+        <div style={{ marginBottom: '10px' }}>
           <label>
             Zip Code:
             <input
@@ -224,12 +224,12 @@ const SignUp = () => {
               placeholder="Enter Zip Code"
               value={formData.zipcode}
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px", marginTop: "4px" }}
+              style={{ width: '100%', padding: '8px', marginTop: '4px' }}
               required
             />
           </label>
         </div>
-        <div style={{ marginBottom: "10px" }}>
+        <div style={{ marginBottom: '10px' }}>
           <label>
             Latitude:
             <input
@@ -238,12 +238,12 @@ const SignUp = () => {
               placeholder="Enter Latitude"
               value={formData.lat}
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px", marginTop: "4px" }}
+              style={{ width: '100%', padding: '8px', marginTop: '4px' }}
               required
             />
           </label>
         </div>
-        <div style={{ marginBottom: "10px" }}>
+        <div style={{ marginBottom: '10px' }}>
           <label>
             Longitude:
             <input
@@ -252,7 +252,7 @@ const SignUp = () => {
               placeholder="Enter Longitude"
               value={formData.long}
               onChange={handleChange}
-              style={{ width: "100%", padding: "8px", marginTop: "4px" }}
+              style={{ width: '100%', padding: '8px', marginTop: '4px' }}
               required
             />
           </label>
@@ -260,22 +260,22 @@ const SignUp = () => {
         <button
           type="submit"
           style={{
-            padding: "10px 20px",
-            backgroundColor: "#A91D3A",
-            color: "#fff",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
+            padding: '10px 20px',
+            backgroundColor: '#A91D3A',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
           }}
           disabled={loading}
         >
-          {loading ? "Signing Up..." : "Sign Up"}
+          {loading ? 'Signing Up...' : 'Sign Up'}
         </button>
       </form>
-      {error && <div style={{ color: "red", marginTop: "10px" }}>{error}</div>}
+      {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
       <div>
-        Already have an account?{" "}
-        <Link to="/" style={{ color: "#A91D3A" }}>
+        Already have an account?{' '}
+        <Link to="/" style={{ color: '#A91D3A' }}>
           Login here
         </Link>
       </div>

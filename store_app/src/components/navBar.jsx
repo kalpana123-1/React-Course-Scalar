@@ -1,32 +1,32 @@
-import React from "react";
-import "../css/navBar.css";
-import { useNavigate } from "react-router-dom";
-import Cart from "../images/cart.png";
+import React from 'react';
+import '../css/navBar.css';
+import { useNavigate } from 'react-router-dom';
+import Cart from '../images/cart.png';
 
 function NavBar() {
   const navigate = useNavigate();
   const handleLogout = () => {
-    navigate("/");
+    navigate('/');
   };
   return (
     <div className="Navbar">
-      <h2 style={{ cursor: "pointer" }} onClick={() => navigate("/home")}>
+      <h2 style={{ cursor: 'pointer' }} onClick={() => navigate('/home')}>
         Products
       </h2>
-      <h2 onClick={() => navigate("/cart")} style={{ cursor: "pointer" }}>
+      <h2 onClick={() => navigate('/cart')} style={{ cursor: 'pointer' }}>
         Cart
         <img
           style={{
-            width: "25px",
-            marginLeft: "10px",
-            marginBottom: "-5px",
+            width: '25px',
+            marginLeft: '10px',
+            marginBottom: '-5px',
           }}
           src={Cart}
           alt="Cart icon"
         />
       </h2>
       <h2>Users</h2>
-      <h2 onClick={handleLogout} style={{ cursor: "pointer" }}>
+      <h2 onClick={handleLogout} style={{ cursor: 'pointer' }}>
         Logout
       </h2>
     </div>
