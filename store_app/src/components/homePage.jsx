@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "./navBar";
 import "../css/homePage.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function ProductCard({ product }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -8,12 +10,13 @@ function ProductCard({ product }) {
   const [visibleDescription, setVisibleDescription] = useState(
     product.description.substring(0, 30)
   );
+  const navigate = useNavigate();
 
   const toggleDescription = () => {
-    setIsExpanded(!isExpanded);
     setVisibleDescription(
-      isExpanded ? product.description : product.description.substring(0, 30)
+      isExpanded ? product.description.substring(0, 30) : product.description
     );
+    setIsExpanded(!isExpanded);
   };
 
   const handleMouseEnter = () => {
@@ -22,15 +25,6 @@ function ProductCard({ product }) {
 
   const handleMouseLeave = () => {
     setIsHovered(false);
-  };
-
-  const [fetchedProduct, setFetchedProduct] = useState(null);
-  const handleViewMoreClick = async () => {
-    const response = await fetch(
-      `https://fakestoreapi.com/products/${product.id}`
-    );
-    const data = await response.json();
-    setFetchedProduct(data);
   };
 
   return (
@@ -44,6 +38,7 @@ function ProductCard({ product }) {
     >
       <div style={{ flex: 1 }}>
         <button
+          onClick={() => navigate(`/singleProduct/${product.id}`)}
           style={{
             position: "absolute",
             top: 10,
@@ -66,7 +61,7 @@ function ProductCard({ product }) {
           src={product.image}
           alt={product.title}
         />
-        <h3>{product.title}</h3>
+        <h4>{product.title}</h4>
         <p>
           <strong style={{ color: "#e10736" }}>Price:</strong> ${product.price}
         </p>
@@ -130,23 +125,18 @@ function HomePage() {
     fetchProducts();
   }, [currentPage]);
 
-  const fetchProducts = () => {
+  const fetchProducts = async () => {
     setIsLoading(true);
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return res.json();
-      })
-      .then((json) => {
-        setProducts(json);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setError(error.message);
-        setIsLoading(false);
-      });
+    try {
+      const response = await axios.get("https://fakestoreapi.com/products");
+      setProducts(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      setError(error.message);
+      setIsLoading(false);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handlePageChange = (page) => {
@@ -158,26 +148,28 @@ function HomePage() {
   const currentPageProducts = products.slice(startIndex, endIndex);
 
   return (
-    <div style={{ display: "flex", alignItems: "flex-start" }}>
-      <NavBar />
-      <div style={{ marginLeft: "60px" }}>
-        {isLoading ? (
-          <div>Loading...</div>
-        ) : error ? (
-          <div>Error: {error}</div>
-        ) : (
-          <div className="product-grid">
-            {currentPageProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-            <Pagination
-              totalItems={products.length}
-              pageSize={4}
-              currentPage={currentPage}
-              onPageChange={handlePageChange}
-            />
-          </div>
-        )}
+    <div>
+      <div style={{ display: "flex", alignItems: "flex-start" }}>
+        <NavBar />
+        <div style={{ marginLeft: "60px" }}>
+          {isLoading ? (
+            <div>Loading...</div>
+          ) : error ? (
+            <div>Error: {error}</div>
+          ) : (
+            <div className="product-grid">
+              {currentPageProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+              <Pagination
+                totalItems={products.length}
+                pageSize={4}
+                currentPage={currentPage}
+                onPageChange={handlePageChange}
+              />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

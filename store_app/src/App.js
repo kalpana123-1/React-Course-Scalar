@@ -6,6 +6,7 @@ import SignUp from "./components/signUp";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
 import HomePage from "./components/homePage";
+import SingleProduct from "./components/singleProduct";
 
 function App() {
   const router = createBrowserRouter([
@@ -20,6 +21,10 @@ function App() {
     {
       path: "/home",
       element: <HomePage />,
+    },
+    {
+      path: `/singleProduct/:productId`,
+      element: <SingleProduct />,
     },
   ]);
   return (
