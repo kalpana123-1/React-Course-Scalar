@@ -1,4 +1,4 @@
-import NavBar from "./navBar";
+import { NavBar } from "./navBar";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "../css/homePage.css";
