@@ -2,14 +2,14 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Calibri";
+  font-family: 'Calibri';
   background-color: #ffffff;
 }
 
 .store-logo {
   width: 80px;
   height: 60px;
-    object-fit: contain;
+  object-fit: contain;
 }
 
 .App-header {
@@ -17,6 +17,6 @@ body {
   flex-direction: row;
   height: 60px;
   align-items: center;
-    justify-content: space-between;
-    color: #e10736;
+  justify-content: space-between;
+  color: #e10736;
 }

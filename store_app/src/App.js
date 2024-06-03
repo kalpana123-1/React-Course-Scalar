@@ -1,26 +1,25 @@
-import "./App.css";
-import React from "react";
-import logo from "./images/store_logo.jpeg";
-import Login from "./components/login";
-import SignUp from "./components/signUp";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import "./App.css";
-import HomePage from "./components/homePage";
-import SingleProduct from "./components/singleProduct";
-import Cart from "./components/Cart";
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import './App.css';
+import React from 'react';
+import logo from './images/store_logo.jpeg';
+import Login from './components/login';
+import SignUp from './components/signUp';
+import HomePage from './components/homePage';
+import SingleProduct from './components/singleProduct';
+import Cart from './components/Cart';
 
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: '/',
       element: <Login />,
     },
     {
-      path: "/signup",
+      path: '/signup',
       element: <SignUp />,
     },
     {
-      path: "/home",
+      path: '/home',
       element: <HomePage />,
     },
     {
@@ -28,7 +27,7 @@ function App() {
       element: <SingleProduct />,
     },
     {
-      path: "/cart",
+      path: '/cart',
       element: <Cart />,
     },
   ]);
@@ -36,7 +35,7 @@ function App() {
     <div className="App">
       <div className="App-header">
         <img src={logo} alt="Store Logo" className="store-logo"></img>
-        <h1 style={{ textAlign: "center" }}>Welcome to K Store App</h1>
+        <h1 style={{ textAlign: 'center' }}>Welcome to K Store App</h1>
         <p></p>
       </div>
       <div>
