@@ -6,21 +6,20 @@ import Login from './components/login';
 import SignUp from './components/signUp';
 import HomePage from './components/homePage';
 import SingleProduct from './components/singleProduct';
-import Users from "./components/Users";
-
+import { Users } from './components/Users';
 
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: '/',
       element: <Login />,
     },
     {
-      path: "/signup",
+      path: '/signup',
       element: <SignUp />,
     },
     {
-      path: "/home",
+      path: '/home',
       element: <HomePage />,
     },
     {
@@ -28,8 +27,21 @@ function App() {
       element: <SingleProduct />,
     },
     {
-      path: "/users",
+      path: '/users',
       element: <Users />,
+    },
+    {
+      path: '/users/addNewUser',
+      element: <div>Add New User</div>,
+    },
+    {
+      path: '/users/updateUser/:userId',
+      element: <div>Update User</div>,
+    },
+    { path: '/users/deleteUser/:userId', element: <div>Delete User</div> },
+    {
+      path: '/cart',
+      element: <div>Cart</div>,
     },
   ]);
   return (
