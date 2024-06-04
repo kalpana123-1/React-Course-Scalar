@@ -5,7 +5,8 @@ import axios from "axios";
 import '../css/users.css';
 import UserIcon from '../images/usericon.webp';
 
-function Users() {
+function Users(isAdding, isUpdating, isDeleting) {
+  console.log(isAdding, isUpdating, isDeleting);
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -73,4 +74,4 @@ function Users() {
   );
 }
 
-export default Users;
+export { Users };
