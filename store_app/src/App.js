@@ -6,20 +6,21 @@ import Login from './components/login';
 import SignUp from './components/signUp';
 import HomePage from './components/homePage';
 import SingleProduct from './components/singleProduct';
-import Cart from './components/Cart';
+import Users from "./components/Users";
+
 
 function App() {
   const router = createBrowserRouter([
     {
-      path: '/',
+      path: "/",
       element: <Login />,
     },
     {
-      path: '/signup',
+      path: "/signup",
       element: <SignUp />,
     },
     {
-      path: '/home',
+      path: "/home",
       element: <HomePage />,
     },
     {
@@ -27,8 +28,8 @@ function App() {
       element: <SingleProduct />,
     },
     {
-      path: '/cart',
-      element: <Cart />,
+      path: "/users",
+      element: <Users />,
     },
   ]);
   return (

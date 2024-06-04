@@ -9,3 +9,7 @@
   height: calc(100vh - 88px);
   overflow-y: auto;
 }
+
+div > h2 {
+  cursor: pointer;
+}
