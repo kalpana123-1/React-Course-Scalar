@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // import { UserNavBar } from './navBar';
 import '../css/users.css';
 import UserIcon from '../images/usericon.webp';
+// import Button from './Button';
 
 function Users() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
@@ -23,12 +26,30 @@ function Users() {
       });
   }, []);
 
+  const addNewUser = () => {
+    navigate('/users/addNewUser');
+  };
+
   return (
     <div>
       {loading ? (
         <div>Loading...</div>
       ) : (
         <div style={{ marginLeft: '50px', marginTop: '20px' }}>
+          <button
+            style={{
+              backgroundColor: '#e10736',
+              color: 'white',
+              border: 'none',
+              borderRadius: '5px',
+              padding: '10px 20px',
+              cursor: 'pointer',
+            }}
+            onClick={addNewUser}
+          >
+            Add New User
+          </button>
+          {/* <Button name="Add New User" onClick={navigate('/users/addNewUser')} /> */}
           <div className="user-card">
             {users.map((user) => (
               <div key={user.id} className="user-details">
@@ -42,35 +63,34 @@ function Users() {
                   }}
                 />
                 <br />
-                <strong color="#e10736">Firstname:</strong>{' '}
+                <strong style={{ color: '#e10736' }}>Firstname:</strong>{' '}
                 {user.name.firstname}
                 <br />
-                <strong color="#e10736">Lastname:</strong> {user.name.lastname}
+                <strong style={{ color: '#e10736' }}>Lastname:</strong>{' '}
+                {user.name.lastname}
                 <br />
-                <strong color="#e10736">Email:</strong> {user.email}
+                <strong style={{ color: '#e10736' }}>Email:</strong>{' '}
+                {user.email}
                 <br />
-                <strong color="#e10736">Username:</strong> {user.username}
+                <strong style={{ color: '#e10736' }}>Username:</strong>{' '}
+                {user.username}
                 <br />
-                <strong color="#e10736">Phone:</strong> {user.phone}
+                <strong style={{ color: '#e10736' }}>Phone:</strong>{' '}
+                {user.phone}
                 <br />
-                <strong color="#e10736">Address:</strong>
-                <br />
-                <strong color="#e10736">Street Name:</strong>{' '}
+                <strong style={{ color: '#e10736' }}>Street Name:</strong>{' '}
                 {user.address.street}
                 <br />
-                <strong color="#e10736">Street Number:</strong>{' '}
+                <strong style={{ color: '#e10736' }}>
+                  Street Number:
+                </strong>{' '}
                 {user.address.number}
                 <br />
-                <strong color="#e10736">City:</strong>
+                <strong style={{ color: '#e10736' }}>City:</strong>
                 {user.address.city}
                 <br />
-                <strong color="#e10736">Zipcode:</strong> {user.address.zipcode}
-                <br />
-                <strong color="#e10736">Latitude:</strong>{' '}
-                {user.address.geolocation.lat}
-                <br />
-                <strong color="#e10736">Longitude:</strong>{' '}
-                {user.address.geolocation.long}
+                <strong style={{ color: '#e10736' }}>Zipcode:</strong>{' '}
+                {user.address.zipcode}
                 <br />
               </div>
             ))}

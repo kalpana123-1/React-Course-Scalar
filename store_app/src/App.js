@@ -7,6 +7,7 @@ import SignUp from './components/signUp';
 import HomePage from './components/homePage';
 import SingleProduct from './components/singleProduct';
 import Users from './components/Users';
+import AddUser from './components/AddUser';
 
 function App() {
   const router = createBrowserRouter([
@@ -32,7 +33,7 @@ function App() {
     },
     {
       path: '/users/addNewUser',
-      element: <Users />,
+      element: <AddUser />,
     },
     {
       path: '/users/updateUser/:userId',
