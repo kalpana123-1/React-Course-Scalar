@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../css/navBar.css';
 import { useNavigate } from 'react-router-dom';
 import Cart from '../images/cart.png';
-import { Users } from './Users';
+// import { Users } from './Users';
+// import { Users } from './Users';
 
 function NavBar() {
   const navigate = useNavigate();
@@ -30,27 +31,28 @@ function NavBar() {
 
 function UserNavBar() {
   // const navigate = useNavigate();
-  const [isAdding, setIsAdding] = useState(false);
-  const [isUpdating, setIsUpdating] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
+  // const [isAdding, setIsAdding] = useState(false);
+  // const [isUpdating, setIsUpdating] = useState(false);
+  // const [isDeleting, setIsDeleting] = useState(false);
   // const [userId, setUserId] = useState(null);
 
   const handleAddClick = () => {
-    setIsAdding(true);
+    // setIsAdding(true);
     // navigate('/users/addNewUser');
-    Users(isAdding, isUpdating, isDeleting);
+    // Users(true, isUpdating, isDeleting);
+    // <Users />
   };
 
   const handleUpdateClick = () => {
-    setIsUpdating(true);
+    // setIsUpdating(true);
     // navigate(`/users/updateUser/${userId}`);
-    Users(isAdding, isUpdating, isDeleting);
+    // Users(isAdding, isUpdating, isDeleting);
   };
 
   const handleDeleteClick = () => {
-    setIsDeleting(true);
+    // setIsDeleting(true);
     // navigate(`/users/deleteUser/${userId}`);
-    Users(isAdding, isUpdating, isDeleting);
+    // Users(isAdding, isUpdating, isDeleting);
   };
 
   return (
