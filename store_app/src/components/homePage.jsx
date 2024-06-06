@@ -29,63 +29,55 @@ function ProductCard({ product }) {
   };
 
   return (
-    <div
-      className="product-card"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        position: 'relative',
-      }}
-    >
-      <div style={{ flex: 1 }}>
+    <div className="card">
+      <div
+        className="card-body"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <button
           onClick={() => navigate(`/singleProduct/${product.id}`)}
+          className="btn btn-danger"
           style={{
             position: 'absolute',
             top: 10,
             right: 10,
-            color: 'white',
-            backgroundColor: '#e10736',
-            padding: '5px 10px',
-            border: 'none',
-            borderRadius: '5px',
             cursor: 'pointer',
           }}
         >
           View More
         </button>
         <img
+          className="card-img-top"
+          src={product.image}
+          alt={product.title}
           style={{
             transform: isHovered ? 'scale(1.1)' : 'scale(1)',
             transition: 'transform 0.3s',
+            width: '40%',
+            height: 'auto',
+            padding: 'auto',
           }}
-          src={product.image}
-          alt={product.title}
         />
-        <h4>{product.title}</h4>
+        <h6 className="card-title">{product.title}</h6>
         <p>
-          <strong style={{ color: '#e10736' }}>Price:</strong> ${product.price}
+          <strong className="text-danger">Price:</strong> ${product.price}
         </p>
         <p>
-          <strong style={{ color: '#e10736' }}>Category:</strong>{' '}
-          {product.category}
+          <strong className="text-danger">Category:</strong> {product.category}
         </p>
         <p>
-          <strong style={{ color: '#e10736' }}>Description:</strong>
+          <strong className="text-danger">Description:</strong>
           {isExpanded ? (
             <p>
-              {' '}
               {product.description}{' '}
               <button
                 onClick={toggleDescription}
+                className="btn btn-danger"
                 style={{
                   padding: '5px 10px',
-                  border: 'none',
                   borderRadius: '5px',
                   cursor: 'pointer',
-                  justifyContent: 'center',
-                  color: 'white',
-                  backgroundColor: '#e10736',
                 }}
               >
                 {isExpanded ? 'Show Less' : 'Show More'}
@@ -96,14 +88,11 @@ function ProductCard({ product }) {
               {visibleDescription}...{' '}
               <button
                 onClick={toggleDescription}
+                className="btn btn-danger"
                 style={{
                   padding: '5px 10px',
-                  border: 'none',
                   borderRadius: '5px',
                   cursor: 'pointer',
-                  justifyContent: 'center',
-                  color: 'white',
-                  backgroundColor: '#e10736',
                 }}
               >
                 {isExpanded ? 'Show Less...' : 'Show More...'}
@@ -161,7 +150,7 @@ function HomePage() {
     <div>
       <div style={{ display: 'flex', alignItems: 'flex-start' }}>
         <NavBar />
-        <div style={{ marginLeft: '60px' }}>
+        <div style={{ marginLeft: '40px' }}>
           {isLoading ? (
             <div>Loading...</div>
           ) : error ? (
@@ -171,14 +160,15 @@ function HomePage() {
               {currentPageProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
-              <Pagination
-                totalItems={products.length}
-                pageSize={4}
-                currentPage={currentPage}
-                onPageChange={handlePageChange}
-              />
             </div>
           )}
+          <br />
+          <Pagination
+            totalItems={products.length}
+            pageSize={4}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
         </div>
       </div>
     </div>
@@ -199,16 +189,13 @@ function Pagination({ totalItems, pageSize, currentPage, onPageChange }) {
           id={`page-button-${index + 1}`}
           key={index}
           onClick={() => handlePageClick(index + 1)}
+          className={`btn btn-sm ${currentPage === index + 1 ? 'btn-light' : 'btn-danger'}`}
           style={{
-            marginLeft: '10px',
             margin: '2px 10px',
             padding: '5px 10px',
-            border: 'none',
             borderRadius: '5px',
             cursor: 'pointer',
             justifyContent: 'center',
-            backgroundColor: currentPage === index + 1 ? 'white' : '#e10736',
-            color: currentPage === index + 1 ? '#e10736' : 'white',
             boxShadow:
               currentPage === index + 1
                 ? '0px 2px 4px rgba(0, 0, 0, 0.2)'
