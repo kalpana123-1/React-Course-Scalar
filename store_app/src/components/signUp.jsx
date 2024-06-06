@@ -41,8 +41,8 @@ const SignUp = () => {
         number: formData.number,
         zipcode: formData.zipcode,
         geolocation: {
-          lat: formData.lat,
-          long: formData.long,
+          lat: '38.87',
+          long: '38.87',
         },
       },
       phone: formData.phone,
@@ -223,34 +223,6 @@ const SignUp = () => {
               name="zipcode"
               placeholder="Enter Zip Code"
               value={formData.zipcode}
-              onChange={handleChange}
-              style={{ width: '100%', padding: '8px', marginTop: '4px' }}
-              required
-            />
-          </label>
-        </div>
-        <div style={{ marginBottom: '10px' }}>
-          <label>
-            Latitude:
-            <input
-              type="text"
-              name="lat"
-              placeholder="Enter Latitude"
-              value={formData.lat}
-              onChange={handleChange}
-              style={{ width: '100%', padding: '8px', marginTop: '4px' }}
-              required
-            />
-          </label>
-        </div>
-        <div style={{ marginBottom: '10px' }}>
-          <label>
-            Longitude:
-            <input
-              type="text"
-              name="long"
-              placeholder="Enter Longitude"
-              value={formData.long}
               onChange={handleChange}
               style={{ width: '100%', padding: '8px', marginTop: '4px' }}
               required
