@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 // import { UserNavBar } from './navBar';
 import '../css/users.css';
 import UserIcon from '../images/usericon.webp';
+import AddUser from './AddUser';
 // import Button from './Button';
 
 function Users() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
@@ -26,9 +27,9 @@ function Users() {
       });
   }, []);
 
-  const addNewUser = () => {
-    navigate('/users/addNewUser');
-  };
+  // const addNewUser = () => {
+  //   navigate('/users/addNewUser');
+  // };
 
   return (
     <div>
@@ -37,6 +38,41 @@ function Users() {
       ) : (
         <div style={{ marginLeft: '50px', marginTop: '20px' }}>
           <button
+            type="button"
+            className="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Add New User
+          </button>
+          <div
+            className="modal fade"
+            id="exampleModal"
+            tabIndex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h1 className="modal-title fs-5" id="exampleModalLabel">
+                    Add new user
+                  </h1>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div className="modal-body">
+                  <AddUser />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* <button
             style={{
               backgroundColor: '#e10736',
               color: 'white',
@@ -48,7 +84,7 @@ function Users() {
             onClick={addNewUser}
           >
             Add New User
-          </button>
+          </button> */}
           {/* <Button name="Add New User" onClick={navigate('/users/addNewUser')} /> */}
           <div className="user-card">
             {users.map((user) => (
