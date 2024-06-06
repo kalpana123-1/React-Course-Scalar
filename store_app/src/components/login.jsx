@@ -8,6 +8,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
 
   const navigate = useNavigate();
   const handleSubmit = async (event) => {
@@ -25,8 +26,10 @@ const Login = () => {
       });
       const data = await response.json();
       if (!response.ok) {
+        setError(data.message || 'Something went wrong');
         throw new Error(data.message || 'Something went wrong');
       } else {
+        setMessage('Login successful');
         console.log('Login successful', data);
         localStorage.setItem('token', data.token);
         navigate('/home');
@@ -51,28 +54,24 @@ const Login = () => {
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: '10px' }}>
-          <label>
-            Username:
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              style={{ width: '90%', padding: '8px', marginTop: '4px' }}
-              required
-            />
-          </label>
+          <label>Username</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            style={{ width: '90%', padding: '8px', marginTop: '4px' }}
+            required
+          />
         </div>
         <div style={{ marginBottom: '10px' }}>
-          <label>
-            Password:
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              style={{ width: '90%', padding: '8px', marginTop: '4px' }}
-              required
-            />
-          </label>
+          <label>Password</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            style={{ width: '90%', padding: '8px', marginTop: '4px' }}
+            required
+          />
         </div>
         {error && (
           <div style={{ color: 'red', marginBottom: '10px' }}>{error}</div>
@@ -94,6 +93,10 @@ const Login = () => {
         </button>
       </form>
       <br />
+      {message && (
+        <div style={{ color: 'green', marginTop: '10px' }}>{message}</div>
+      )}
+      {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
       <div>
         Don&apos;t have an account?{' '}
         <Link to="/signup" style={{ color: '#A91D3A' }}>
