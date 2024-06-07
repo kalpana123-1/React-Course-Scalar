@@ -4,6 +4,7 @@ import '../css/homePage.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { Tooltip } from 'bootstrap';
 
 function ProductCard({ product }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -28,6 +29,29 @@ function ProductCard({ product }) {
     setIsHovered(false);
   };
 
+  const titleRestriction = (title) => {
+    if (title.length > 45) {
+      return title.substring(0, 45) + '...';
+    } else {
+      return title;
+    }
+  };
+
+  useEffect(() => {
+    // Select all elements with the data-bs-toggle="tooltip" attribute
+    const tooltipTriggerList = document.querySelectorAll(
+      '[data-bs-toggle="tooltip"]',
+    );
+    // Initialize a new Bootstrap Tooltip instance for each selected element
+    const tooltipList = [...tooltipTriggerList].map(
+      (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl),
+    );
+    // Cleanup tooltips when the component unmounts
+    return () => {
+      tooltipList.forEach((tooltip) => tooltip.dispose());
+    };
+  }, []);
+
   return (
     <div className="card">
       <div
@@ -48,18 +72,30 @@ function ProductCard({ product }) {
           View More
         </button>
         <img
-          className="card-img-top"
+          className="card-img-top w-50 p-auto"
           src={product.image}
           alt={product.title}
           style={{
             transform: isHovered ? 'scale(1.1)' : 'scale(1)',
             transition: 'transform 0.3s',
-            width: '40%',
-            height: 'auto',
-            padding: 'auto',
+            // width: '40%',
+            height: '30%',
+            objectFit: 'contain',
+            // padding: 'auto',
           }}
         />
-        <h6 className="card-title">{product.title}</h6>
+
+        <h6 className="card-title mt-3" style={{ height: '50px' }}>
+          <a
+            href="#"
+            data-bs-toggle="tooltip"
+            data-bs-title={product?.title}
+            data-bs-placement="bottom"
+          >
+            {titleRestriction(product?.title)}
+          </a>
+        </h6>
+
         <p>
           <strong className="text-danger">Price:</strong> ${product.price}
         </p>
@@ -84,11 +120,11 @@ function ProductCard({ product }) {
               </button>
             </p>
           ) : (
-            <p>
+            <p className="w-100">
               {visibleDescription}...{' '}
               <button
                 onClick={toggleDescription}
-                className="btn btn-danger"
+                className="btn btn-outline text-danger"
                 style={{
                   padding: '5px 10px',
                   borderRadius: '5px',
@@ -150,7 +186,7 @@ function HomePage() {
     <div>
       <div style={{ display: 'flex', alignItems: 'flex-start' }}>
         <NavBar />
-        <div style={{ marginLeft: '40px' }}>
+        <div className="w-75" style={{ marginLeft: '40px' }}>
           {isLoading ? (
             <div>Loading...</div>
           ) : error ? (
