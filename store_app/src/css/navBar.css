@@ -13,3 +13,48 @@
 div > h2 {
   cursor: pointer;
 }
+
+.sidebar {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: auto;
+  grid-template-areas:
+    "header"
+    "content";
+  background-color: #e10736;
+  color: white;
+  width: 200px;
+  height: 90vh;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  grid-area: header;
+  padding: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.sidebar-content {
+  grid-area: content;
+  padding: 10px;
+}
+
+.sidebar-item {
+  margin-bottom: 10px;
+}
+
+.sidebar-item span {
+  display: block;
+  padding: 10px;
+  background-color: #f1f1f1;
+  color: black;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.sidebar-item span:hover {
+  background-color: #e10736;
+  color: white;
+}

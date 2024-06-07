@@ -8,7 +8,6 @@ function SingleProduct() {
   const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   let { productId } = useParams();
-  console.log('productId: ', productId);
 
   useEffect(() => {
     getSingleProduct(productId);
@@ -34,7 +33,7 @@ function SingleProduct() {
   return (
     <div style={{ display: 'flex', alignItems: 'flex-start' }}>
       <NavBar />
-      <div style={{ marginLeft: '60px', width: '100%' }}>
+      <div style={{ marginLeft: '40px' }}>
         {isLoading ? (
           <div>Loading...</div>
         ) : (
