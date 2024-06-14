@@ -29,6 +29,12 @@ const App = () => {
     setContent("");
   };
 
+  const handleDelete = (id) => {
+    const updatedNotes = notes.filter((note) => note.id !== id);
+    setNotes(updatedNotes);
+    localStorage.setItem("notes", JSON.stringify(updatedNotes));
+  };
+
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
@@ -58,7 +64,7 @@ const App = () => {
         {notes.map((note) => (
           <div className="note-item" key={note.id}>
             <div className="notes-header">
-              <button>x</button>
+              <button onClick={() => handleDelete(note.id)}>x</button>
             </div>
             <div className="notes-body">
               <h3>{note.title}</h3>
